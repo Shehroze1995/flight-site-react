@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+.gridCols {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.bounceAnimate {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: none;
+  }
+  50% {
+    transform: translateY(-20%);
+  }
+}
