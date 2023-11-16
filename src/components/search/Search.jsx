@@ -43,7 +43,11 @@ const Search = () => {
           </button>
         ))}
       </header>
-      <section data-aos="fade-up" data-aos-duration="3000" className="grid gridCols gap-4 w-11/12 max-w-7xl m-auto text-xl">
+      <section
+        data-aos="fade-up"
+        data-aos-duration="3000"
+        className="grid gridCols gap-4 w-11/12 max-w-7xl m-auto text-xl"
+      >
         {searchLinks.map((link) => (
           <div key={link.name}>
             <div className="flex items-center mb-2">
@@ -60,21 +64,18 @@ const Search = () => {
                   ? "Arrival.."
                   : link.name == "travelers"
                   ? "Add Names.."
-                  : "Add Date.."
+                  : ""
               }
               className="border border-gray-400 w-full py-1 pl-4 outline-none rounded-xl"
-              type="text"
-              name=""
-              id=""
+              type={`${
+                link.name == "check in" || link.name == "check out"
+                  ? "date"
+                  : "text"
+              }`}
             />
-            {link.name == "check in" || link.name == "check out" ? (
-              <span className="text-base ml-1 opacity-70">
-                Format DD/MM/YYYY
-              </span>
-            ) : null}
           </div>
         ))}
-        <div className="flex place-items-center">
+        <div className="flex place-items-end">
           <button
             className="bg-blue-400 py-2 px-6 rounded-3xl transition-all duration-300 hover:px-8"
             type="button"
