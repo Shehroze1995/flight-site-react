@@ -1,12 +1,27 @@
+import { useEffect } from "react";
+import Aos from "aos";
+import "aos/dist/aos.css";
 import { HiOutlineMail } from "react-icons/hi";
 
 const Subscribe = () => {
+  useEffect(() => {
+    Aos.init({ duration: 2000 });
+  }, []);
+
   return (
     <div className="py-20 bg-gray-200">
-      <h2 className="text-4xl font-extrabold text-center max-[377px]:text-2xl">
+      <h2
+        data-aos="fade-up"
+        data-aos-duration="3500"
+        className="text-4xl font-extrabold text-center max-[377px]:text-2xl"
+      >
         Subscribe Newsletter <br />& Get Latest News
       </h2>
-      <div className="w-11/12 max-w-2xl m-auto relative my-6">
+      <div
+        data-aos="fade-down"
+        data-aos-duration="3500"
+        className="w-11/12 max-w-2xl m-auto relative my-6"
+      >
         <HiOutlineMail className="text-3xl text-blue-500 absolute left-2 top-[50%] translate-y-[-50%] max-[377px]:text-xl" />
         <input
           className="border border-gray-400 py-3 pl-12 rounded-3xl w-full outline-none text-xl max-[377px]:pl-8 max-[377px]:text-sm"

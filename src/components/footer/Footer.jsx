@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import Aos from "aos";
+import "aos/dist/aos.css";
 import {
   FaFacebookF,
   FaTwitter,
@@ -37,10 +40,14 @@ const footerMore = [
 ];
 
 const Footer = () => {
+  useEffect(() => {
+    Aos.init({ duration: 2000 });
+  }, []);
+
   return (
-    <footer className="bg-gray-600 text-white pt-16">
+    <footer className="bg-gray-800 text-white pt-16">
       <section className="grid gridCols place-items-start place-content-center w-11/12 max-w-6xl m-auto gap-6">
-        <div className="grid gap-3">
+        <div data-aos="fade-right" data-aos-duration="4500" className="grid gap-3">
           <h3 className="text-3xl text-red-500 font-extrabold">Flights</h3>
           <p className="text-gray-400">
             Your mind should be stronger than your feelings. Fly!
@@ -52,7 +59,7 @@ const Footer = () => {
             <FaPinterestP className="text-pink-500 border w-8 h-8 p-1 rounded-full" />
           </div>
         </div>
-        <div>
+        <div data-aos="fade-up" data-aos-duration="4500">
           {footerInfo.map((info) => (
             <p
               key={info}
@@ -65,7 +72,7 @@ const Footer = () => {
             </p>
           ))}
         </div>
-        <div>
+        <div data-aos="fade-down" data-aos-duration="4500">
           {footerGuide.map((guide) => (
             <p
               key={guide}
@@ -78,7 +85,7 @@ const Footer = () => {
             </p>
           ))}
         </div>
-        <div>
+        <div data-aos="fade-left" data-aos-duration="4500">
           {footerMore.map((more) => (
             <p
               key={more}

@@ -1,12 +1,18 @@
+import { useRef, useState, useEffect } from "react";
+import Aos from "aos";
+import "aos/dist/aos.css";
 import { SiConsul } from "react-icons/si";
 import { BiSupport } from "react-icons/bi";
 import { FaGlobe } from "react-icons/fa";
 import { GoSidebarExpand } from "react-icons/go";
-import { useRef, useState } from "react";
 const navLinks = ["home", "about", "offers", "seats", "destinations"];
 const sidebarLinks = [...navLinks, "support", "languages", "contact"];
 
 const Navbar = () => {
+  // useEffect(() => {
+  //   Aos.init({ duration: 2000 });
+  // }, []);
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const mainNavRef = useRef();
 
@@ -15,15 +21,14 @@ const Navbar = () => {
   };
 
   const handleNavPadd = () => {
-    if (window.scrollY > 18) mainNavRef.current.style.paddingBlock = '.5rem'
-    else mainNavRef.current.style.paddingBlock = '2rem'
-
+    if (window.scrollY > 18) mainNavRef.current.style.paddingBlock = ".5rem";
+    else mainNavRef.current.style.paddingBlock = "2rem";
   };
 
   window.onscroll = () => handleNavPadd();
 
   return (
-    <nav className={`py-2 fixed w-full top-0 bg-white z-10`}>
+    <nav className={`py-2 fixed top-0 w-full m-auto bg-white z-10`}>
       <section className="flex items-center justify-between w-11/12 m-auto max-w-7xl text-xl">
         <SiConsul className="text-blue-600" />
         <div className="flex items-center gap-4 max-[1000px]:hidden">
@@ -74,7 +79,7 @@ const Navbar = () => {
         />
       </section>
       <aside
-        className={`w-11/12 m-auto grid place-items-start text-xl rounded-md bg-gray-300 transition-all duration-300 overflow-hidden ${
+        className={`w-11/12 max-w-md m-auto grid place-items-start text-xl rounded-md bg-gray-300 transition-all duration-300 overflow-hidden ${
           isSidebarOpen ? "max-h-[380px]" : "max-h-0 invisible"
         }`}
       >

@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Aos from "aos";
+import "aos/dist/aos.css";
 import london from "../../assets/london.jpg";
 import europe from "../../assets/europe.jpg";
 import dubai from "../../assets/dubai.jpg";
@@ -42,6 +44,10 @@ const travelers = [
 const Travelers = () => {
   const [currentPerson, setCurrentPerson] = useState(0);
 
+  useEffect(() => {
+    Aos.init({ duration: 2000 });
+  }, []);
+
   const showPersonData = (id) => {
     setCurrentPerson(id);
   };
@@ -52,14 +58,14 @@ const Travelers = () => {
 
   return (
     <div className="py-20">
-      <h2 className="text-center text-3xl font-extrabold">
+      <h2 data-aos="fade-down" data-aos-duration="3500" className="text-center text-3xl font-extrabold">
         Top Travelers of this Month!
       </h2>
-      <section className="grid gridCols place-items-center gap-y-8 mt-12">
+      <section className="grid gridCols w-11/12 m-auto max-w-7xl place-items-center gap-y-8 mt-12">
         {travelers.map((traveler) => {
           const { id, cityImg, personImg, personName, personID } = traveler;
           return (
-            <div
+            <div data-aos="fade-up" data-aos-duration="4500"
               onMouseOver={() => showPersonData(id)}
               onMouseLeave={() => hideData()}
               className="h-80 w-60 rounded-[10rem] relative overflow-hidden"
@@ -78,7 +84,9 @@ const Travelers = () => {
               />
               <div
                 className={`bg-white text-center py-3 transition-all duration-500 ${
-                  currentPerson == id ? "-translate-y-16" : "translate-y-0 invisible"
+                  currentPerson == id
+                    ? "-translate-y-16"
+                    : "translate-y-0 invisible"
                 }`}
               >
                 <p>{personName}</p>

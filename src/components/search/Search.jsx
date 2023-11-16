@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   FaLocationDot,
   FaRegCircleUser,
   FaCalendarDays,
 } from "react-icons/fa6";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const classes = ["economy", "business class", "first class"];
 const searchLinks = [
@@ -15,10 +17,18 @@ const searchLinks = [
 ];
 
 const Search = () => {
+  useEffect(() => {
+    Aos.init({ duration: 2000 });
+  }, []);
+
   const [activeBtn, setActiveBtn] = useState(classes[0]);
   return (
     <main className="py-16 bg-gray-200">
-      <header className="flex place-items-center place-content-center gap-2 text-2xl mb-8 max-[326px]:text-xs max-[360px]:text-sm max-[393px]:text-base max-[520px]:text-lg ">
+      <header
+        data-aos="fade-up"
+        data-aos-duration="2500"
+        className="flex place-items-center place-content-center gap-2 text-2xl mb-8 max-[326px]:text-xs max-[360px]:text-sm max-[393px]:text-base max-[520px]:text-lg "
+      >
         {classes.map((item) => (
           <button
             onClick={() => setActiveBtn(item)}
@@ -33,7 +43,7 @@ const Search = () => {
           </button>
         ))}
       </header>
-      <section className="grid gridCols gap-4 w-11/12 max-w-7xl m-auto text-xl">
+      <section data-aos="fade-up" data-aos-duration="3000" className="grid gridCols gap-4 w-11/12 max-w-7xl m-auto text-xl">
         {searchLinks.map((link) => (
           <div key={link.name}>
             <div className="flex items-center mb-2">
